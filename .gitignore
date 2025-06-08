@@ -1,6 +1,6 @@
 *
 !.gitignore
 !.md
-!.py
 !src/
-!Tests/
+!*.py
+!*/**/*.py
