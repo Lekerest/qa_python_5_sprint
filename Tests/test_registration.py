@@ -16,8 +16,7 @@ def test_registration():
     name = 'Иван' + str(password) ### имя
 
 
-    WebDriverWait(driver, 5).until(
-        expected_conditions.element_to_be_clickable(
+    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(
             (By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']")))
     driver.find_element(By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']").click() ### личный кабинет
 
@@ -39,15 +38,30 @@ def test_registration():
 
     driver.find_element(By.CSS_SELECTOR, "button.button_button__33qZ0.button_button_type_primary__1O7Bx.button_button_size_medium__3zxIa").click() ### кнопка зарегистрироваться
 
-    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable((By.XPATH,
-    ".//div[@class='input pr-6 pl-6 input_type_password input_size_default']/*[text()='Пароль']/following-sibling::input")))
-    time.sleep(2)
+    WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located(
+        (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input")))
+    WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
+        (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input")))
+
     driver.find_element(By.XPATH,
     ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input").send_keys(Email) ### Email
     driver.find_element(By.XPATH,
     ".//div[@class='input pr-6 pl-6 input_type_password input_size_default']/*[text()='Пароль']/following-sibling::input").send_keys(password) ### пароль
     driver.find_element(By.CSS_SELECTOR, "button.button_button__33qZ0.button_button_type_primary__1O7Bx.button_button_size_medium__3zxIa").click()
 
+    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(
+        (By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']")))
+    driver.find_element(By.XPATH, ".//p[(@class='AppHeader_header__linkText__3q_va ml-2') and (text()='Личный Кабинет')]").click()
 
-    time.sleep(2)
+    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(
+        (By.XPATH, ".//button[(@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa') and (text()='Сохранить')]")))
+
+    time.sleep(10)
+
+    assert () == Email
     driver.quit()
+
+   #condition = expected_conditions.all_of(expected_conditions.presence_of_element_located(
+   #         (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input")),
+   #     expected_conditions.visibility_of_element_located((By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input")))
+   # WebDriverWait(driver, 5).until(condition)
