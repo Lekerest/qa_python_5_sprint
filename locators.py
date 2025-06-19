@@ -25,5 +25,13 @@ class Locators:
     ERROR_PASSWORD = (By.CSS_SELECTOR, ".input__error.text_type_main-default")
 
     #Кнопка входа с главной страницы
-    BUTTON_ENTRANCE_IN_ACCOUNT = (By.CSS_SELECTOR, ".button_button__33qZ0.button_button_type_primary__1O7Bx.button_button_size_large__G21Vg")
+    BUTTON_ENTRANCE_IN_ACCOUNT_ON_MAIN_PAGE = (By.CSS_SELECTOR, ".button_button__33qZ0.button_button_type_primary__1O7Bx.button_button_size_large__G21Vg")
 
+    #Кнопка входа из формы регистрации
+    BUTTON_ENTRANCE_IN_ACCOUNT_FROM_REGISTRATION = (By.CSS_SELECTOR, ".Auth_link__1fOlj")
+
+    # Кнопка восстановления пароля
+    BUTTON_RECOVERY_PASSWORD = (By.XPATH, ".//a[(@class='Auth_link__1fOlj') and (text()='Восстановить пароль')]")
+
+    #Кнопка входа из формы восстановления пароля
+    BUTTON_ENTRANCE_IN_RECOVERY_FORM = (By.CSS_SELECTOR, ".Auth_link__1fOlj")
