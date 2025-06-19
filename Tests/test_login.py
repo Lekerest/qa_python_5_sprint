@@ -28,7 +28,7 @@ class TestRegistration:
         ############ ВОТ ТУТ ОЖИДАНИЕ КОТОРОЕ ПРОСТО НЕ ХОЧЕТ РАБОТАТЬ ############
         #WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located(Locators.FIELD_EMAIL))
         #WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.FIELD_EMAIL))
-        time.sleep(2)
+        time.sleep(5)
         ############ С ОЖИДАНИЕМ НЕ РАБОТАЕТ А С time.sleep РАБОТАЕТ ############
 
         driver.find_element(*Locators.FIELD_EMAIL).send_keys(email) ### email

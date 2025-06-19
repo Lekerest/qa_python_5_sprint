@@ -20,3 +20,10 @@ class Locators:
 
     #Кнопка зарегистрироваться в форме регистрации
     BUTTON_REGISTRATION_FORM_AND_ENTRANCE = (By.CSS_SELECTOR, "button.button_button__33qZ0.button_button_type_primary__1O7Bx.button_button_size_medium__3zxIa")
+
+    #Некорректный пароль
+    ERROR_PASSWORD = (By.CSS_SELECTOR, ".input__error.text_type_main-default")
+
+    #Кнопка входа с главной страницы
+    BUTTON_ENTRANCE_IN_ACCOUNT = (By.CSS_SELECTOR, ".button_button__33qZ0.button_button_type_primary__1O7Bx.button_button_size_large__G21Vg")
+
