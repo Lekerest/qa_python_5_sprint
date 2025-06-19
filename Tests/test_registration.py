@@ -1,7 +1,7 @@
-from locators import Locators
+from Tests.locators import Locators
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-import time
+
 
 def test_registration(driver, test_user_data):
 
