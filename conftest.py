@@ -4,6 +4,16 @@ import pytest
 import random
 
 @pytest.fixture
+def driver():
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+    driver.get(Locators.MAIN_URL)
+
+    yield driver
+
+    driver.quit()
+
+@pytest.fixture
 def test_user_data():
     list_domen = ['ya.ru', 'gmail.com', 'mail.ru']
     password = str(random.randint(100000, 999999))
@@ -15,13 +25,3 @@ def test_user_data():
         'password': password,
         'name': name
     }
-
-@pytest.fixture
-def driver():
-    driver = webdriver.Chrome()
-    driver.maximize_window()
-    driver.get(Locators.MAIN_URL)
-
-    yield driver
-
-    driver.quit()
