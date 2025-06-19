@@ -1,3 +1,4 @@
+import locators
 import random
 from selenium.webdriver.common.by import By
 from selenium import webdriver
@@ -8,7 +9,7 @@ import time
 def test_registration():
     driver = webdriver.Chrome()
     driver.maximize_window() # полноэкранный режим
-    driver.get("https://stellarburgers.nomoreparties.site/") ### главная страница сайта
+    driver.get(locators.main_url) ### главная страница сайта
 
     list_domen = ['ya.ru', 'gmail.com', 'mail.ru']
     Email = 'Ivan_Hritankov_25_' + str(random.randint(100, 999)) + '@' + random.choice(list_domen) ### Email
