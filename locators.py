@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 class Locators:
-
     #Главная страница
     MAIN_URL = "https://stellarburgers.nomoreparties.site/"
 
@@ -14,7 +13,7 @@ class Locators:
     FIELD_NAME = (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Имя']/following-sibling::input")
 
     #Поле email
-    FIELD_EMAIL = (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='email']/following-sibling::input")
+    FIELD_EMAIL = (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input")
 
     #Поле пароль
     FIELD_PASSWORD = (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_password input_size_default']/*[text()='Пароль']/following-sibling::input")
