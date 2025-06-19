@@ -28,9 +28,15 @@ def test_registration(driver, test_user_data):
     driver.find_element(*Locators.BUTTON_REGISTRATION_FORM_AND_ENTRANCE).click() ### кнопка зарегистрироваться
 
     ### Ждем форму входа, заполняем и нажимаем войти ###
+
+    ############ ВОТ ТУТ ОЖИДАНИЕ КОТОРОЕ ПРОСТО НЕ ХОЧЕТ РАБОТАТЬ ############
+
     WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located(Locators.BUTTON_REGISTRATION_FORM_AND_ENTRANCE))
     WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.BUTTON_REGISTRATION_FORM_AND_ENTRANCE))
     #time.sleep(5)
+
+    ############ С ОЖИДАНИЕМ НЕ РАБОТАЕТ А С time.sleep РАБОТАЕТ ############
+
     driver.find_element(*Locators.FIELD_EMAIL).send_keys(email) ### email
     driver.find_element(*Locators.FIELD_PASSWORD).send_keys(password) ### пароль
     driver.find_element(*Locators.BUTTON_REGISTRATION_FORM_AND_ENTRANCE).click()
