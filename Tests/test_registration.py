@@ -1,68 +1,45 @@
-import locators
-import random
-from selenium.webdriver.common.by import By
-from selenium import webdriver
+from locators import Locators
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 import time
 
-def test_registration():
-    driver = webdriver.Chrome()
-    driver.maximize_window() # полноэкранный режим
-    driver.get(locators.main_url) ### главная страница сайта
+def test_registration(driver, test_user_data):
 
-    list_domen = ['ya.ru', 'gmail.com', 'mail.ru']
-    Email = 'Ivan_Hritankov_25_' + str(random.randint(100, 999)) + '@' + random.choice(list_domen) ### Email
-    password = str(random.randint(100000, 999999)) ### пароль
-    name = 'Иван' + str(password) ### имя
+    ### Сначала фикстура driver ###
 
+    ### Создаем пользовательские данные ###
+    email = test_user_data['email']
+    password = test_user_data['password']
+    name = test_user_data['name']
 
-    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(
-            (By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']")))
-    driver.find_element(By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']").click() ### личный кабинет
+    ### Ждем копку личный кабинет и нажимаем ###
+    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.BUTTON_PERSONAL_CABINET))
+    driver.find_element(Locators.BUTTON_PERSONAL_CABINET).click()
 
-    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(
-        (By.XPATH, ".//a[text()='Зарегистрироваться']")))
-    driver.find_element(By.XPATH, ".//a[text()='Зарегистрироваться']").click() ### кнопка зарегистрироваться
+    ### Ждем кнопку зарегистрироваться и нажимаем ###
+    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.TEXT_REGISTRATION_LOGIN))
+    driver.find_element(Locators.TEXT_REGISTRATION_LOGIN).click()
 
+    ### Ждем поле с именем и вводим данные в каждое поле после нажимаем зарегистрироваться ###
+    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.FIELD_NAME))
+    driver.find_element(Locators.FIELD_NAME).send_keys(name) ### имя
+    driver.find_element(Locators.FIELD_EMAIL).send_keys(email) ### email
+    driver.find_element(Locators.FIELD_PASSWORD).send_keys(password) ### пароль
+    driver.find_element(Locators.BUTTON_REGISTRATION_FORM_AND_ENTRANCE).click() ### кнопка зарегистрироваться
 
-    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(
-        (By.XPATH,
-         ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Имя']/following-sibling::input")))
+    ### Ждем форму входа, заполняем и нажимаем войти ###
+    WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located(Locators.FIELD_EMAIL))
+    WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.FIELD_EMAIL))
+    driver.find_element(Locators.FIELD_EMAIL).send_keys(email) ### email
+    driver.find_element(Locators.FIELD_PASSWORD).send_keys(password) ### пароль
+    driver.find_element(Locators.BUTTON_REGISTRATION_FORM_AND_ENTRANCE).click()
 
-    driver.find_element(By.XPATH,
-    ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Имя']/following-sibling::input").send_keys(name) ### имя
-    driver.find_element(By.XPATH,
-    ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input").send_keys(Email) ### Email
-    driver.find_element(By.XPATH,
-    ".//div[@class='input pr-6 pl-6 input_type_password input_size_default']/*[text()='Пароль']/following-sibling::input").send_keys(password) ### пароль
+    ### Ждем копку личный кабинет и нажимаем ###
+    #WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.BUTTON_PERSONAL_CABINET))
+    #driver.find_element(Locators.BUTTON_PERSONAL_CABINET).click()
 
-    driver.find_element(By.CSS_SELECTOR, "button.button_button__33qZ0.button_button_type_primary__1O7Bx.button_button_size_medium__3zxIa").click() ### кнопка зарегистрироваться
+#    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(
+#        (By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']")))
+#    driver.find_element(By.XPATH, ".//p[(@class='AppHeader_header__linkText__3q_va ml-2') and (text()='Личный Кабинет')]").click()
 
-    WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located(
-        (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input")))
-    WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
-        (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input")))
-
-    driver.find_element(By.XPATH,
-    ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input").send_keys(Email) ### Email
-    driver.find_element(By.XPATH,
-    ".//div[@class='input pr-6 pl-6 input_type_password input_size_default']/*[text()='Пароль']/following-sibling::input").send_keys(password) ### пароль
-    driver.find_element(By.CSS_SELECTOR, "button.button_button__33qZ0.button_button_type_primary__1O7Bx.button_button_size_medium__3zxIa").click()
-
-    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(
-        (By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']")))
-    driver.find_element(By.XPATH, ".//p[(@class='AppHeader_header__linkText__3q_va ml-2') and (text()='Личный Кабинет')]").click()
-
-    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(
-        (By.XPATH, ".//button[(@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa') and (text()='Сохранить')]")))
-
-    time.sleep(10)
-
-    assert () == Email
-    driver.quit()
-
-   #condition = expected_conditions.all_of(expected_conditions.presence_of_element_located(
-   #         (By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input")),
-   #     expected_conditions.visibility_of_element_located((By.XPATH, ".//div[@class='input pr-6 pl-6 input_type_text input_size_default']/*[text()='Email']/following-sibling::input")))
-   # WebDriverWait(driver, 5).until(condition)
+    assert driver.current_url == Locators.MAIN_URL
