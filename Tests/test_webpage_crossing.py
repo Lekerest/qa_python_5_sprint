@@ -1,7 +1,7 @@
 from locators import Locators
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from test_login import login_in_account
+from .test_login import login_in_account
 
 class TestWebPageCrossing:
 
@@ -21,14 +21,14 @@ class TestWebPageCrossing:
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.LOGO_URL)).click()
         assert driver.current_url == Locators.MAIN_URL
 
-
-# ############ 3. Вход по кнопке из регистрации ############
+# ############ 3. Переход из личного кабинета на главную через лого ############
 #     def test_login_from_registration_form(self, driver):
 #         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.BUTTON_PERSONAL_CABINET)).click()
-#         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.TEXT_REGISTRATION_LOGIN)).click()
-#         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.BUTTON_ENTRANCE_IN_ACCOUNT_FROM_REGISTRATION)).click()
 #         login_in_account(driver)
-#
+#         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.BUTTON_PERSONAL_CABINET)).click()
+#         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.LOGO_URL)).click()
+#         assert driver.current_url == Locators.MAIN_URL
+
 # ############ 4. Вход по кнопке из восстановления пароля ############
 #     def test_login_from_recovery_form(self, driver):
 #         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.BUTTON_PERSONAL_CABINET)).click()

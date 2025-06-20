@@ -41,3 +41,5 @@ class Locators:
 
     #Переход по логотипу
     LOGO_URL = (By.XPATH, ".//a[(@href='/')]")
+
+    TEXT_CONSTRUCTOR_URl = (By.CSS_SELECTOR, '.AppHeader_header__linkText__3q_va.ml-2')
