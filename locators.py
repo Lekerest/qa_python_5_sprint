@@ -3,6 +3,9 @@ class Locators:
     #Главная страница
     MAIN_URL = "https://stellarburgers.nomoreparties.site/"
 
+    #Страница личный кабинет
+    PERSONAL_CABINET_URL = "https://stellarburgers.nomoreparties.site/account/profile"
+
     #Личный кабинет
     BUTTON_PERSONAL_CABINET = (By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']")
 
@@ -35,3 +38,6 @@ class Locators:
 
     #Кнопка входа из формы восстановления пароля
     BUTTON_ENTRANCE_IN_RECOVERY_FORM = (By.CSS_SELECTOR, ".Auth_link__1fOlj")
+
+    #Переход по логотипу
+    LOGO_URL = (By.XPATH, ".//a[(@href='/')]")
