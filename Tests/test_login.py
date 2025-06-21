@@ -2,7 +2,6 @@ from locators import Locators
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-
 def login_in_account(driver):
     email = "test@testtest.ru"
     password = 123456

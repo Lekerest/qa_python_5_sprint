@@ -1,8 +1,6 @@
 from locators import Locators
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-import time
-
 
 def register_user(driver, name, email, password):
     WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.BUTTON_PERSONAL_CABINET)).click()
@@ -22,13 +20,7 @@ class TestRegistration:
 
         register_user(driver, name, email, password)
 
-        ############ ВОТ ТУТ ОЖИДАНИЕ КОТОРОЕ ПРОСТО НЕ ХОЧЕТ РАБОТАТЬ ############
-        #WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located(Locators.FIELD_EMAIL))
-        #WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.FIELD_EMAIL))
-        #WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.FIELD_EMAIL))
-        time.sleep(2)
-        ############ С ОЖИДАНИЕМ НЕ РАБОТАЕТ А С time.sleep РАБОТАЕТ ############
-
+        WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.BUTTON_ENTRANCE_IN_LOGIN_FORM))
         driver.find_element(*Locators.FIELD_EMAIL).send_keys(email) ### email
         driver.find_element(*Locators.FIELD_PASSWORD).send_keys(password) ### пароль
         driver.find_element(*Locators.BUTTON_REGISTRATION_FORM_AND_ENTRANCE).click()
