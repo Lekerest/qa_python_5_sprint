@@ -1,5 +1,5 @@
 from locators import Locators
-from Data.data_users import valid_user
+from Tests.Data.data_users import valid_user
 from url import Urls
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait

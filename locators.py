@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 class Locators:
     #Личный кабинет
-    BUTTON_PERSONAL_CABINET = (By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']")
+    BUTTON_PERSONAL_CABINET = (By.XPATH, ".//a[(@class='AppHeader_header__link__3D_hX') and (@href='/account')]")
 
     #Кнопка зарегистрироваться как текст в форме войти
     TEXT_REGISTRATION_LOGIN = (By.XPATH, ".//a[text()='Зарегистрироваться']")
@@ -34,7 +34,7 @@ class Locators:
     BUTTON_ENTRANCE_IN_RECOVERY_FORM = (By.CSS_SELECTOR, ".Auth_link__1fOlj")
 
     #Переход по логотипу
-    LOGO_URL = (By.XPATH, ".//a[(@href='/')]")
+    LOGO_URL = (By.XPATH, "//a[(@href='/')]")
 
     #Кликабельный текст Конструктор
     TEXT_CONSTRUCTOR_URl = (By.CSS_SELECTOR, '.AppHeader_header__linkText__3q_va.ml-2')
