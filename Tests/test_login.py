@@ -1,11 +1,12 @@
 from locators import Locators
+from Data.data_users import valid_user
 from url import Urls
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 def login_in_account(driver):
-    email = "test@testtest.ru"
-    password = 123456
+    email = valid_user["email"]
+    password = valid_user["password"]
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.FIELD_EMAIL))
     driver.find_element(*Locators.FIELD_EMAIL).send_keys(email)  ### email
     driver.find_element(*Locators.FIELD_PASSWORD).send_keys(password)  ### пароль
