@@ -1,4 +1,5 @@
 from locators import Locators
+from url import Urls
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from .test_login import login_in_account
@@ -13,29 +14,29 @@ class TestWebPageCrossing:
 ############ 1. Нажатие на личный кабинет у авторизованного пользователя переводит в личный кабинет ############
     def test_crossing_on_personal_cabinet(self, driver):
         authorization(driver)
-        WebDriverWait(driver, 5).until(EC.url_to_be(Locators.PERSONAL_CABINET_URL))
-        assert driver.current_url == Locators.PERSONAL_CABINET_URL
+        WebDriverWait(driver, 5).until(EC.url_to_be(Urls.PERSONAL_CABINET_URL))
+        assert driver.current_url == Urls.PERSONAL_CABINET_URL
 
 ############ 2. Переход из личного кабинета на главную через лого ############
     def test_crossing_on_main_page_through_logo(self, driver):
         authorization(driver)
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.LOGO_URL)).click()
-        WebDriverWait(driver, 5).until(EC.url_to_be(Locators.MAIN_URL))
-        assert driver.current_url == Locators.MAIN_URL
+        WebDriverWait(driver, 5).until(EC.url_to_be(Urls.MAIN_URL))
+        assert driver.current_url == Urls.MAIN_URL
 
 ############ 3. Переход из личного кабинета на главную через текст конструктор ############
     def test_crossing_on_main_page_through_constructor(self, driver):
         authorization(driver)
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.TEXT_CONSTRUCTOR_URl)).click()
-        WebDriverWait(driver, 5).until(EC.url_to_be(Locators.MAIN_URL))
-        assert driver.current_url == Locators.MAIN_URL
+        WebDriverWait(driver, 5).until(EC.url_to_be(Urls.MAIN_URL))
+        assert driver.current_url == Urls.MAIN_URL
 
 ############ 4. Выход из аккаунта ############
     def test_exit_from_account(self, driver):
         authorization(driver)
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.BUTTON_EXIT_FROM_ACCOUNT)).click()
-        WebDriverWait(driver, 5).until(EC.url_to_be(Locators.LOGIN_FORM_URL))
-        assert driver.current_url == Locators.LOGIN_FORM_URL
+        WebDriverWait(driver, 5).until(EC.url_to_be(Urls.LOGIN_FORM_URL))
+        assert driver.current_url == Urls.LOGIN_FORM_URL
 
 ############ 5. Переход к разделу булки ############
     def test_crossing_chapter_buns(self, driver):

@@ -1,5 +1,5 @@
 from selenium import webdriver
-from locators import Locators
+from url import Urls
 import pytest
 import random
 
@@ -20,7 +20,7 @@ def test_user_data():
 def driver():
     driver = webdriver.Chrome()
     driver.maximize_window()
-    driver.get(Locators.MAIN_URL)
+    driver.get(Urls.MAIN_URL)
 
     yield driver
 

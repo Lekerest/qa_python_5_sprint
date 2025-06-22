@@ -1,4 +1,5 @@
 from locators import Locators
+from url import Urls
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -25,8 +26,8 @@ class TestRegistration:
         driver.find_element(*Locators.FIELD_PASSWORD).send_keys(password) ### пароль
         driver.find_element(*Locators.BUTTON_REGISTRATION_FORM_AND_ENTRANCE).click()
 
-        WebDriverWait(driver, 5).until(expected_conditions.url_to_be(Locators.MAIN_URL))
-        assert driver.current_url == Locators.MAIN_URL
+        WebDriverWait(driver, 5).until(expected_conditions.url_to_be(Urls.MAIN_URL))
+        assert driver.current_url == Urls.MAIN_URL
 
     def test_password_error(self, driver, test_user_data):
         email = test_user_data['email']

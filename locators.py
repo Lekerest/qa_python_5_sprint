@@ -1,14 +1,5 @@
 from selenium.webdriver.common.by import By
 class Locators:
-    #Главная страница
-    MAIN_URL = "https://stellarburgers.nomoreparties.site/"
-
-    #Страница личный кабинет
-    PERSONAL_CABINET_URL = "https://stellarburgers.nomoreparties.site/account/profile"
-
-    #Страница входа
-    LOGIN_FORM_URL = "https://stellarburgers.nomoreparties.site/login"
-
     #Личный кабинет
     BUTTON_PERSONAL_CABINET = (By.XPATH, "html/body/div/div/header/nav/a[@class='AppHeader_header__link__3D_hX']")
 
