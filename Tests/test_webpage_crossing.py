@@ -1,13 +1,4 @@
-from locators import Locators
-from url import Urls
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
-from .test_login import login_in_account
-
-def authorization(driver):
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.BUTTON_PERSONAL_CABINET)).click()
-    login_in_account(driver)
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.BUTTON_PERSONAL_CABINET)).click()
+from helpers import *
 
 class TestWebPageCrossing:
 

@@ -1,17 +1,4 @@
-from locators import Locators
-from Tests.Data.data_users import valid_user
-from url import Urls
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
-
-def login_in_account(driver):
-    email = valid_user["email"]
-    password = valid_user["password"]
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable(Locators.FIELD_EMAIL))
-    driver.find_element(*Locators.FIELD_EMAIL).send_keys(email)  ### email
-    driver.find_element(*Locators.FIELD_PASSWORD).send_keys(password)  ### пароль
-    driver.find_element(*Locators.BUTTON_REGISTRATION_FORM_AND_ENTRANCE).click()
-    WebDriverWait(driver, 5).until(EC.url_to_be(Urls.MAIN_URL))
+from helpers import *
 
 class TestLogin:
 
